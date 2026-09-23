@@ -1,0 +1,37 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0f1b2b;
+  color: #fff;
+  padding: 14px 28px;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-family: 'Georgia', serif;
+  font-size: 17px;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  color: #c6cdd6;
+}
+
+.navbar-user button {
+  background: transparent;
+  border: 1px solid #3a4759;
+  color: #fff;
+  border-radius: 3px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.navbar-user button:hover {
+  border-color: #1e6f5c;
+  background: #16283f;
+}

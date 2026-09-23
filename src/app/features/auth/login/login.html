@@ -1,0 +1,46 @@
+<div class="login-page">
+  <div class="login-panel">
+    <div class="brand">
+      <span class="brand-mark">Lm</span>
+      <div class="brand-text">
+        <h1>LabyMed</h1>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+      <label class="field">
+        <span>Usuario</span>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="tu.usuario"
+          autocomplete="username"
+        />
+        @if (form.controls.username.invalid && form.controls.username.touched) {
+          <small class="field-error">Ingresa tu usuario.</small>
+        }
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="••••••••"
+          autocomplete="current-password"
+        />
+        @if (form.controls.password.invalid && form.controls.password.touched) {
+          <small class="field-error">Mínimo 6 caracteres.</small>
+        }
+      </label>
+
+      @if (errorMsg()) {
+        <div class="alert">{{ errorMsg() }}</div>
+      }
+
+      <button type="submit" [disabled]="cargando()">
+        {{ cargando() ? 'Ingresando…' : 'Ingresar' }}
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<app-navbar />
+
+<main class="page">
+  <div class="page-header">
+    <h1>Estudiantes</h1>
+    <button class="btn-primary">+ Nuevo estudiante</button>
+  </div>
+
+  @if (error()) {
+    <div class="alert">{{ error() }}</div>
+  }
+
+  @if (cargando()) {
+    <p class="hint">Cargando…</p>
+  } @else if (estudiantes().length === 0) {
+    <p class="hint">Todavía no hay estudiantes registrados.</p>
+  } @else {
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Nivel</th>
+          <th>Sección</th>
+          <th>Cursos</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (e of estudiantes(); track e.idEstudiante) {
+          <tr>
+            <td>{{ e.idEstudiante }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.apellido }}</td>
+            <td>{{ e.nivel }}</td>
+            <td>{{ e.seccion }}</td>
+            <td>{{ e.cursos?.length ?? 0 }}</td>
+            <td class="actions">
+              <button class="btn-text">Editar</button>
+              <button class="btn-text danger" (click)="eliminar(e.idEstudiante)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</main>
